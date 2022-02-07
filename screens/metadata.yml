@@ -1,0 +1,51 @@
+openapi: 3.0.0
+servers:
+  - description: Mock API for PyCascades 2022
+    url: https://localhost:4000
+info:
+  description: This is a mock API
+  termsOfService: http://example.com/terms
+  version: "1.0.0"
+  title: PyCascades Mock API
+  contact:
+    name: PyCascades Speaker
+    email: you@your-company.com
+    url: https://example.com/speakeremail
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  
+paths:
+  /:
+    get:
+      operationId: get-talks
+      summary: Returns a list of talks.
+      description: Returns a list of all the talks.
+      tags:
+        - Talks
+      parameters:
+        - $ref: '#/components/parameters/listSize'
+      responses:
+        '200':
+          description: Success. It works!
+          content:
+            application/json:
+              schema:
+                type: object 
+                properties:
+                  output:
+                    type: string 
+                    example: This is a returned string!
+
+components:
+  parameters:
+    listSize:
+      in: query
+      description: Desired length
+      name: page
+      schema:
+        type: integer
+        format: int32
+        default: 1
+        minimum: 1
+        maximum: 100

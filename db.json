@@ -1,0 +1,32 @@
+[
+    {
+        "talk_id": "pycascades2022-talk01",
+        "talk_name": "Building Elegant API Contracts: From Zero to Hero",
+        "talk_speaker": "Neeraj Pandey",
+        "talk_pitch": "Learn how one can write efficient APIs with high-quality API specifications using Open API and RAML specs to create API contracts and achieve a better experience using the API with more reliable unit tests and increased response consistency."
+    },
+    {
+        "talk_id": "pycascades2022-talk02",
+        "talk_name": "omputational Creativity: Could AI be the next DADA movement?",
+        "talk_speaker": "Neeraj Pandey",
+        "talk_pitch": "Learn how the computational, psychological, and economic aspects of AI-generated art, music, and generative design along with automated computational tasks using Machine Learning and Artificial Intelligence."
+    },
+    {
+        "talk_id": "pycascades2022-talk03",
+        "talk_name": "Genetic Algorithms: Better optimisation with Darwinian Principles",
+        "talk_speaker": "Neeraj Pandey",
+        "talk_pitch": "Evolutionary algorithms have continuously shaped us from optimizing ride-sharing trip duration, to the most complex artificial intelligence, and life. Learn how genetic algorithms in Python, a nature-inspired approach to optimization can effectively help generate music to forecast financial markets."
+    },
+    {
+        "talk_id": "pycascades2022-talk04",
+        "talk_name": "The Coming Geography of the Digital Age",
+        "talk_speaker": "Neeraj Pandey",
+        "talk_pitch": "Understand the interaction between computing and human society in all of its facets, from economics to the supply chain, from elections and propaganda to individual behavioural changes."
+    },
+    {
+        "talk_id": "pycascades2022-talk04",
+        "talk_name": "Don't let your data model `drift` away!",
+        "talk_speaker": "Neeraj Pandey",
+        "talk_pitch": "Learn how model drifts in the production environment affects our machine learning models and how to track and assess them in Python so that the model remains relevant in production and makes fair and unbiased predictions over time."
+    }
+]

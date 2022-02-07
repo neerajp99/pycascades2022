@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info: 
+    title: PyCascades Voting
+    version: ""
+    description: Vote for the talks you liked at PyCascades 2022
+    contact:
+        name: Neeraj Pandey
+        email: neerajemail@email.com
+        url: https://twitter.com/neerajp99
+    license:
+        name: XYZ License 
+        url: https://licence.xyz.com
+servers:
+    -   url: http://localhost:5000
+        description: Local dev server
+tags:
+    -   name: details 
+        description: All details of the talks
+    -   name: detail_single
+        description: Detail of a single talk
+    -   name: upvote
+        description: Upvote a talk
+paths: 
+    '/':
+        get:
+            tags:
+                -   details
+            summary: fetches talks list
+            description: Get details of all the beautiful talks submitted by the speakers. 
+            parameters: 
+              - name: talkLimit
+                in: query
+                description: Number of talks fetched in a single request
+                schema: 
+                    type: integer
+                    minimum: 20
+                    maximum: 50
+                    example: 35
+            responses:  
+                '200':
+                    description: It works!
+                    content: 
+                        application/json: 
+                            schema: 
+                                type: array
+                                items: 
+                                    properties:
+                                        talk_id: 
+                                            type: string
+                                            example: pycascades2022-talk01
+                                        talk_name: 
+                                            type: string 
+                                            example: 'Building Elegant API Contracts: From Zero to Hero' 
+                                        talk_speaker:
+                                            type: string 
+                                            example: Neeraj Pandey
+                                        talk_pitch: 
+                                            type: string
+                                            example: Learn how one can write efficient APIs with high-quality API specifications using Open API and RAML specs to create API contracts and achieve a better experience using the API with more reliable unit tests and increased response consistency.
+
+                '404':
+                    description: No talk found on this url!
+
+    '/talk/{id}':
+        get:
+            tags:   
+                -   detail_single
+            summary: fetch the current talk using talk id 
+            description: Get details of the current talk
+            parameters:
+                -   name: id
+                    required: true
+                    in: path
+                    description: ID of the talk
+                    schema:
+                        type: string
+
+            responses:
+                '200': 
+                    description: It works!
+                    content: 
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    talk_id: 
+                                        type: string
+                                        example: pycascades2022-talk01
+                                    talk_name: 
+                                        type: string 
+                                        example: 'Building Elegant API Contracts: From Zero to Hero' 
+                                    talk_speaker:
+                                        type: string 
+                                        example: Neeraj Pandey
+                                    talk_pitch: 
+                                        type: string
+                                        example: Learn how one can write efficient APIs with high-quality API specifications using Open API and RAML specs to create API contracts and achieve a better experience using the API with more reliable unit tests and increased response consistency.
+
+
+                '4XX': 
+                    description: Talk not found!
+                    content:    
+                        application/http-problems: {}
+
+
+    '/vote/{id}':
+        post:
+            tags:
+                -   upvote
+            summary: upvotes for a talk
+            description: Cast a vote for the given talk
+            parameters:
+                -   name: id
+                    required: true
+                    in: path
+                    description: ID of the talk
+                    schema:
+                        type: string
+            requestBody: 
+                required: true 
+                content: 
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                talk_id:
+                                    type: string 
+                                    example: pycascades2022-talk01
+            responses:  
+                '200':  
+                    description: Your vote has been successfully cast. 
+                '400':
+                    description: Invalid input
+                '422':
+                    description: You have already voted for this talk!
+                '404':
+                    description: Talk not found! 
+
+
